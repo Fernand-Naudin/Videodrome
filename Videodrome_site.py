@@ -224,4 +224,6 @@ def main():
         top_movies_page(df)
 
     with tab6:
-        power_bi_login_page()  
+        power_bi_login_page()
+
+main()
