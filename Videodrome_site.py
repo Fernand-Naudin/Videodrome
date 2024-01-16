@@ -7,7 +7,6 @@ from sklearn.metrics.pairwise import cosine_similarity
 st.set_page_config(layout="wide")
 
 # Chargement et préparation des données
-
 def load_and_prepare_data():
     # Chemin vers le fichier CSV (à remplacer par votre chemin de fichier)
     data_path = "final_merged_imdb_akas_2023-11-26_16h02m36s.csv"
@@ -54,7 +53,6 @@ def display_movie_details(movie_record):
         st.write("Aucune image disponible pour ce film.")
 
 # Fonction pour recommander des films
-@st.cache
 def recommend_movies(selected_movie_id, df, cosine_sim_matrix, number_of_movies=10):
     if selected_movie_id not in df.index:
         return pd.DataFrame()  # Retourner un DataFrame vide si l'ID n'est pas trouvé
@@ -200,6 +198,7 @@ def power_bi_login_page():
             st.error("Nom d'utilisateur ou mot de passe incorrect")
 
 # Interface utilisateur Streamlit
+@st.cache
 def main():
     st.markdown("<h1 style='text-align: center; text-decoration: underline;'>VIDEODROME - Recommandations de films</h1>", unsafe_allow_html=True)
     
