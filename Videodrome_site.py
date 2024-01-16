@@ -10,7 +10,7 @@ st.set_page_config(layout="wide")
 @st.cache_resource
 def load_and_prepare_data():
     # Chemin vers le fichier CSV (à remplacer par votre chemin de fichier)
-    data_path = r"C:\Users\Fifi\Documents\Python\WCS_-_Projet_2\Extractions\final_merged_imdb_akas_2023-11-26_16h02m36s.csv"
+    data_path = "final_merged_imdb_akas_2023-11-26_16h02m36s_allege.csv"
     
     # Chargement des données
     df = pd.read_csv(data_path, sep=",", low_memory=False)
