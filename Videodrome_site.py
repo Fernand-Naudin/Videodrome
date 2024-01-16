@@ -13,16 +13,16 @@ def load_and_prepare_data():
     data_path = "https://github.com/Fernand-Naudin/Videodrome/tree/main/final_merged_imdb_akas_2023-11-26_16h02m36s.csv"
     # uploaded_file = st.file_uploader("https://github.com/Fernand-Naudin/Videodrome/tree/main/final_merged_imdb_akas_2023-11-26_16h02m36s.csv")
     
-    # Chargement des données
-    df = pd.read_csv(data_path, sep=",", low_memory=False)
-    st.write(df)
+    # # Chargement des données
+    # df = pd.read_csv(data_path, sep=",", low_memory=False)
+    # st.write(df)
 
-    # Utilisation de la colonne 'genres' pour la similarité
-    tfidf = TfidfVectorizer()
-    tfidf_matrix = tfidf.fit_transform(df['genres'])
+    # # Utilisation de la colonne 'genres' pour la similarité
+    # tfidf = TfidfVectorizer()
+    # tfidf_matrix = tfidf.fit_transform(df['genres'])
 
-    # Calcul de la matrice de similarité cosinus
-    cosine_sim = cosine_similarity(tfidf_matrix)
+    # # Calcul de la matrice de similarité cosinus
+    # cosine_sim = cosine_similarity(tfidf_matrix)
 
     return df, cosine_sim
 
