@@ -7,6 +7,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 st.set_page_config(layout="wide")
 
 # Chargement et préparation des données
+@st.cache_resource
 def load_and_prepare_data():
     # Chemin vers le fichier CSV (à remplacer par votre chemin de fichier)
     data_path = "final_merged_imdb_akas_2023-11-26_16h02m36s.csv"
@@ -198,7 +199,7 @@ def power_bi_login_page():
             st.error("Nom d'utilisateur ou mot de passe incorrect")
 
 # Interface utilisateur Streamlit
-@st.cache_data
+@st.cache_resource
 def main():
     st.markdown("<h1 style='text-align: center; text-decoration: underline;'>VIDEODROME - Recommandations de films</h1>", unsafe_allow_html=True)
     
