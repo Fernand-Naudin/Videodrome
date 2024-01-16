@@ -10,7 +10,7 @@ st.set_page_config(layout="wide")
 @st.cache_resource
 def load_and_prepare_data():
     # Chemin vers le fichier CSV (à remplacer par votre chemin de fichier)
-    data_path = "final_merged_imdb_akas_2023-11-26_16h02m36s_allege.csv"
+    data_path = "final_merged_imdb_akas_2023-11-26_16h02m36s.csv.gz"
     
     # Chargement des données
     df = pd.read_csv(data_path, sep=",", low_memory=False)
