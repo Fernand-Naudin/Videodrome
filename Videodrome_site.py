@@ -12,11 +12,9 @@ def load_and_prepare_data():
     # Chemin vers le fichier CSV (à remplacer par votre chemin de fichier)
     data_path = "https://github.com/Fernand-Naudin/Videodrome/tree/main/final_merged_imdb_akas_2023-11-26_16h02m36s.csv"
     # uploaded_file = st.file_uploader("https://github.com/Fernand-Naudin/Videodrome/tree/main/final_merged_imdb_akas_2023-11-26_16h02m36s.csv")
-    data_path = st.write(data_path)
     
     # Chargement des données
     df = pd.read_csv(data_path, sep=",", low_memory=False)
-    # st.write(df)
 
     # Utilisation de la colonne 'genres' pour la similarité
     tfidf = TfidfVectorizer()
