@@ -7,7 +7,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 st.set_page_config(layout="wide")
 
 # Chargement et préparation des données
-@st.cache_data
+@st.cache
 def load_and_prepare_data():
     # Chemin vers le fichier CSV (à remplacer par votre chemin de fichier)
     data_path = "final_merged_imdb_akas_2023-11-26_16h02m36s.csv"
