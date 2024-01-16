@@ -14,6 +14,7 @@ def load_and_prepare_data():
     
     # Chargement des données
     df = pd.read_csv(data_path, sep=",", low_memory=False)
+    st.write(df)
 
     # Utilisation de la colonne 'genres' pour la similarité
     tfidf = TfidfVectorizer()
