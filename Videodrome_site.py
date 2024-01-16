@@ -198,7 +198,7 @@ def power_bi_login_page():
             st.error("Nom d'utilisateur ou mot de passe incorrect")
 
 # Interface utilisateur Streamlit
-@st.cache
+@st.cache_data
 def main():
     st.markdown("<h1 style='text-align: center; text-decoration: underline;'>VIDEODROME - Recommandations de films</h1>", unsafe_allow_html=True)
     
