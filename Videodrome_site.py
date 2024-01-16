@@ -225,4 +225,5 @@ def main():
     with tab6:
         power_bi_login_page()
 
-main()
+if __name__ == '__main__':
+    main()
