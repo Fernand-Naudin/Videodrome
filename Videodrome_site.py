@@ -7,7 +7,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 st.set_page_config(layout="wide")
 
 # Chargement et préparation des données
-@st.cache_resource
+@st.cache_data
 def load_and_prepare_data():
     # Chemin vers le fichier CSV (à remplacer par votre chemin de fichier)
     data_path = "final_merged_imdb_akas_2023-11-26_16h02m36s.csv.gz"
@@ -25,7 +25,6 @@ def load_and_prepare_data():
     return df, cosine_sim
 
 # Fonction pour afficher les détails d'un film
-@st.cache_resource
 def display_movie_details(movie_record):
     movie_title = movie_record['title'].upper()
     movie_year = movie_record['startYear']
@@ -55,7 +54,6 @@ def display_movie_details(movie_record):
         st.write("Aucune image disponible pour ce film.")
 
 # Fonction pour recommander des films
-@st.cache_resource
 def recommend_movies(selected_movie_id, df, cosine_sim_matrix, number_of_movies=10):
     if selected_movie_id not in df.index:
         return pd.DataFrame()  # Retourner un DataFrame vide si l'ID n'est pas trouvé
@@ -92,7 +90,6 @@ def recommend_movies(selected_movie_id, df, cosine_sim_matrix, number_of_movies=
     return similar_movies
 
 # Page des recommandations de films
-@st.cache_resource
 def movies_recommendation_page(df, cosine_sim):
     selected_movie_title = st.selectbox('Choisissez un film', [''] + list(df['Titres'].unique()), index=0)
     if selected_movie_title:
@@ -116,7 +113,6 @@ def movies_recommendation_page(df, cosine_sim):
                 st.write("Aucune recommandation disponible pour ce film.")
 
 # Page des acteurs et actrices
-@st.cache_resource
 def actors_page(df):
     actor_columns = ['actor_1', 'actor_2', 'actor_3', 'actor_4', 'actor_5', 'actress_1', 'actress_2', 'actress_3', 'actress_4', 'actress_5']
     all_actors = pd.unique(df[actor_columns].values.ravel('K'))
@@ -132,7 +128,6 @@ def actors_page(df):
             display_movie_details(movie)
 
 # Nouvelle page pour les réalisateurs
-@st.cache_resource
 def directors_page(df):
     director_columns = ['director_1', 'director_2', 'director_3', 'director_4', 'director_5']
     all_directors = pd.unique(df[director_columns].values.ravel('K'))
@@ -149,7 +144,6 @@ def directors_page(df):
             display_movie_details(movie)
 
 # Page pour les genres
-@st.cache_resource
 def genres_page(df):
     genre_columns = ['genres_1', 'genres_2', 'genres_3']
     all_genres = pd.unique(df[genre_columns].values.ravel('K'))
@@ -170,7 +164,6 @@ def genres_page(df):
             display_movie_details(movie)
 
 # Page du Top 100 des films
-@st.cache_resource
 def top_movies_page(df):
     # Filtrer les films avec au moins 100000 votes et supprimer les doublons
     top_movies = df[df['numVotes'] >= 100000].drop_duplicates(subset='tconst')
@@ -183,7 +176,6 @@ def top_movies_page(df):
         display_movie_details(movie)
 
 # Page de connexion pour Power BI
-@st.cache_resource
 def power_bi_login_page():
     st.markdown("<h2 style='text-align: center; font-weight: bold; text-decoration: underline;'>Connexion Power BI</h2>", unsafe_allow_html=True)
     
@@ -207,7 +199,6 @@ def power_bi_login_page():
             st.error("Nom d'utilisateur ou mot de passe incorrect")
 
 # Interface utilisateur Streamlit
-@st.cache_resource
 def main():
     st.markdown("<h1 style='text-align: center; text-decoration: underline;'>VIDEODROME - Recommandations de films</h1>", unsafe_allow_html=True)
     
