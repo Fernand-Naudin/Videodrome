@@ -24,7 +24,7 @@ def load_and_prepare_data():
     # # Calcul de la matrice de similarité cosinus
     # cosine_sim = cosine_similarity(tfidf_matrix)
 
-    return df, cosine_sim
+    # return df, cosine_sim
 
 # Fonction pour afficher les détails d'un film
 def display_movie_details(movie_record):
