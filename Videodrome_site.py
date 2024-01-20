@@ -13,10 +13,22 @@ def load_and_prepare_data():
     # Chemin vers le fichier CSV (à remplacer par votre chemin de fichier)
     # data_path = "final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv"
     # uploaded_file = st.file_uploader("https://github.com/Fernand-Naudin/Videodrome/tree/main/final_merged_imdb_akas_2023-11-26_16h02m36s.csv")
+
+    # Créer un uploader de fichiers
+    uploaded_file = st.file_uploader("Choisissez un fichier CSV")
+
+    if uploaded_file is not None:
+        # Pour lire le fichier téléversé comme un DataFrame
+        df = pd.read_csv(uploaded_file)
+        # Afficher les premières lignes du DataFrame
+        st.write(df.head())
+
+
+
     
     # Chargement des données
-    df = pd.read_csv("final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv", sep=",")
-    df.columns
+    # df = pd.read_csv("final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv", sep=",")
+    # df.columns
     
     # Utilisation de la colonne 'genres' pour la similarité
     tfidf = TfidfVectorizer()
