@@ -8,57 +8,12 @@ from io import StringIO
 # Configuration de la page pour utiliser toute la largeur
 st.set_page_config(layout="wide")
 
-# @st.cache
-# def load_data(url):
-#     # Envoyer une requête HTTP GET pour obtenir le contenu du fichier CSV
-#     response = requests.get(url)
-#     response.raise_for_status()  # Vérifier que la requête a réussi
-
-#     # Convertir le contenu en texte en un objet fichier utilisable par Pandas
-#     csv_raw = StringIO(response.text)
-#     df = pd.read_csv(csv_raw)
-#     return df
-
 # Chargement et préparation des données
-# @st.cache_data
+@st.cache_data
 def load_and_prepare_data():
-    # Chemin vers le fichier CSV (à remplacer par votre chemin de fichier)
-    # data_path = "final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv"
-    # uploaded_file = st.file_uploader("https://github.com/Fernand-Naudin/Videodrome/tree/main/final_merged_imdb_akas_2023-11-26_16h02m36s.csv")
-
-    # # Créer un uploader de fichiers
-    # uploaded_file = st.file_uploader("Choisissez un fichier CSV")
-
-    # if uploaded_file is not None:
-    #     # Pour lire le fichier téléversé comme un DataFrame
-    #     df = pd.read_csv(uploaded_file, sep=',')
-    #     # Afficher les premières lignes du DataFrame
-    #     st.write(df.head())
-
-    # st.dataframe(df)
-    # df = st.dataframe(df)
-    
-    # Chargement des données
-    # df = pd.read_csv("final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv", sep=",")
-    # df.columns
-
-
-    
-
-    # # URL du fichier CSV sur GitHub
-    # csv_url = 'https://raw.githubusercontent.com/Fernand-Naudin/Videodrome/main/final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv'
-    
-    # # Charger les données
-    # df = load_data(csv_url)
-    
-    # # Afficher les données
-    # st.write(df)
-
-
-    
-
     # URL du fichier CSV sur GitHub
     csv_url = 'https://raw.githubusercontent.com/Fernand-Naudin/Videodrome/main/final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv'
+    print(csv_url)
     
     # Envoyer une requête HTTP GET pour obtenir le contenu du fichier CSV
     response = requests.get(csv_url)
@@ -73,8 +28,6 @@ def load_and_prepare_data():
     
     # Afficher les premières lignes du DataFrame pour vérifier
     print(df.head())
-
-
     
     
     # Utilisation de la colonne 'genres' pour la similarité
