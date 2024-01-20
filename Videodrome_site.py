@@ -16,7 +16,7 @@ def load_and_prepare_data():
     
     # Chargement des données
     try:
-        df = pd.read_csv("https://github.com/Fernand-Naudin/Videodrome/tree/main/final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv", sep=",", low_memory=False, error_bad_lines=False, warn_bad_lines=True)
+        df = pd.read_csv("https://github.com/Fernand-Naudin/Videodrome/tree/main/final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv", sep=",", low_memory=False, on_bad_lines='skip')
     except pd.errors.EmptyDataError:
         st.error("Le fichier CSV est vide ou n'existe pas à l'emplacement spécifié.")
     except Exception as e:
