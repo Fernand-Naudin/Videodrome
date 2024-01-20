@@ -23,10 +23,6 @@ def load_and_prepare_data():
     # Charger les données
     df = load_data(csv_url)
     
-    # Afficher le DataFrame dans l'application
-    st.write("Aperçu des données :")
-    st.dataframe(df)    
-    
     # Utilisation de la colonne 'genres' pour la similarité
     tfidf = TfidfVectorizer()
     tfidf_matrix = tfidf.fit_transform(df['genres'])
