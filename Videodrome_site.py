@@ -15,7 +15,7 @@ def load_and_prepare_data():
     # uploaded_file = st.file_uploader("https://github.com/Fernand-Naudin/Videodrome/tree/main/final_merged_imdb_akas_2023-11-26_16h02m36s.csv")
     
     # Chargement des données
-    df = pd.read_csv("final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv", sep=",", on_bad_lines='warn')
+    df = pd.read_csv("final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv", sep=",")
     df.describe()
     
     # Utilisation de la colonne 'genres' pour la similarité
