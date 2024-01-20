@@ -5,21 +5,20 @@ from sklearn.metrics.pairwise import cosine_similarity
 import requests
 from io import StringIO
 
-# Chargement et préparation des données
+import requests
+
 # URL du fichier CSV sur GitHub
-csv_url = 'https://raw.githubusercontent.com/Fernand-Naudin/Videodrome/main/final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv'
-print(csv_url)
+csv_url = 'https://raw.githubusercontent.com/user/repo/branch/filename.csv'
 
-# Envoyer une requête HTTP GET pour obtenir le contenu du fichier CSV
+# Envoyer une requête GET
 response = requests.get(csv_url)
-print(response)
-response.raise_for_status()  # Vérifier que la requête a réussi
 
-# Convertir le contenu en texte en un objet fichier utilisable par Pandas
-csv_raw = StringIO(response.text)
+# Vérifier que la requête a réussi
+response.raise_for_status()
 
-# Utiliser pandas pour lire le fichier CSV
-df = pd.read_csv(csv_raw)
+# Lire le contenu du fichier
+content = response.text
 
-# Afficher les premières lignes du DataFrame pour vérifier
-print(df.head())
+# Afficher le contenu du fichier (ou une partie)
+print(content[:500])  # Afficher les 500 premiers caractères
+
