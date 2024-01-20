@@ -8,16 +8,16 @@ from io import StringIO
 # Configuration de la page pour utiliser toute la largeur
 st.set_page_config(layout="wide")
 
-@st.cache
-def load_data(url):
-    # Envoyer une requête HTTP GET pour obtenir le contenu du fichier CSV
-    response = requests.get(url)
-    response.raise_for_status()  # Vérifier que la requête a réussi
+# @st.cache
+# def load_data(url):
+#     # Envoyer une requête HTTP GET pour obtenir le contenu du fichier CSV
+#     response = requests.get(url)
+#     response.raise_for_status()  # Vérifier que la requête a réussi
 
-    # Convertir le contenu en texte en un objet fichier utilisable par Pandas
-    csv_raw = StringIO(response.text)
-    df = pd.read_csv(csv_raw)
-    return df
+#     # Convertir le contenu en texte en un objet fichier utilisable par Pandas
+#     csv_raw = StringIO(response.text)
+#     df = pd.read_csv(csv_raw)
+#     return df
 
 # Chargement et préparation des données
 # @st.cache_data
