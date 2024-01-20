@@ -1,24 +1,30 @@
 import streamlit as st
 import pandas as pd
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
 import requests
 from io import StringIO
 
-import requests
+
+@st.cache  # Utiliser le cache pour éviter de recharger les données à chaque interaction
+def load_data(url):
+    # Envoyer une requête GET pour obtenir le contenu du fichier CSV
+    response = requests.get(url)
+    response.raise_for_status()  # Vérifier que la requête a réussi
+
+    # Convertir le contenu en texte en un objet fichier utilisable par Pandas
+    csv_raw = StringIO(response.text)
+
+    # Utiliser pandas pour lire le fichier CSV
+    df = pd.read_csv(csv_raw)
+    return df
 
 # URL du fichier CSV sur GitHub
-csv_url = 'https://raw.githubusercontent.com/Fernand-Naudin/Videodrome/main/final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv'
+csv_url = 'https://raw.githubusercontent.com/user/repo/branch/filename.csv'
 
-# Envoyer une requête GET
-response = requests.get(csv_url)
+# Charger les données
+df = load_data(csv_url)
 
-# Vérifier que la requête a réussi
-response.raise_for_status()
+# Afficher le DataFrame dans l'application
+st.write("Aperçu des données :")
+st.dataframe(df)
 
-# Lire le contenu du fichier
-content = response.text
-
-# Afficher le contenu du fichier (ou une partie)
-print(content[:500])  # Afficher les 500 premiers caractères
 
