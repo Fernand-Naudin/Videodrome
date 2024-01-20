@@ -19,7 +19,11 @@ def load_and_prepare_data():
 
     # Utilisation de la colonne 'genres' pour la similarité
     tfidf = TfidfVectorizer()
-    tfidf_matrix = tfidf.fit_transform(df['genres'])
+    try:
+        tfidf_matrix = tfidf.fit_transform(df['genres'])
+    except KeyError:
+        st.error("La colonne 'genres' n'existe pas dans le DataFrame.")
+
 
     # Calcul de la matrice de similarité cosinus
     cosine_sim = cosine_similarity(tfidf_matrix)
