@@ -1,5 +1,3 @@
 streamlit
 scikit-learn
 requests
-io
-StringIO
