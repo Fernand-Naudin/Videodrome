@@ -14,7 +14,7 @@ def load_data(url):
     csv_raw = StringIO(response.text)
 
     # Utiliser pandas pour lire le fichier CSV
-    df = pd.read_csv(csv_raw)
+    df = pd.read_csv(csv_raw, sep = ',')
     return df
 
 # URL du fichier CSV sur GitHub
