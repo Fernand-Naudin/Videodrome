@@ -43,14 +43,37 @@ def load_and_prepare_data():
     # df.columns
 
 
+    
+
+    # # URL du fichier CSV sur GitHub
+    # csv_url = 'https://raw.githubusercontent.com/Fernand-Naudin/Videodrome/main/final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv'
+    
+    # # Charger les données
+    # df = load_data(csv_url)
+    
+    # # Afficher les données
+    # st.write(df)
+
+
+    
+
     # URL du fichier CSV sur GitHub
     csv_url = 'https://raw.githubusercontent.com/Fernand-Naudin/Videodrome/main/final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv'
     
-    # Charger les données
-    df = load_data(csv_url)
+    # Envoyer une requête HTTP GET pour obtenir le contenu du fichier CSV
+    response = requests.get(csv_url)
+    response.raise_for_status()  # Vérifier que la requête a réussi
     
-    # Afficher les données
-    st.write(df)
+    # Convertir le contenu en texte en un objet fichier utilisable par Pandas
+    csv_raw = StringIO(response.text)
+    
+    # Utiliser pandas pour lire le fichier CSV
+    df = pd.read_csv(csv_raw)
+    
+    # Afficher les premières lignes du DataFrame pour vérifier
+    print(df.head())
+
+
     
     
     # Utilisation de la colonne 'genres' pour la similarité
