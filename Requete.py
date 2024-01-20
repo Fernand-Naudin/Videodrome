@@ -1,23 +1,16 @@
 import streamlit as st
 import pandas as pd
-import requests
-from io import StringIO
 
+# Widget pour téléverser un fichier
+uploaded_file = st.file_uploader("Choisissez un fichier CSV", type="csv")
 
-@st.cache  # Utiliser le cache pour éviter de recharger les données à chaque interaction
-def load_data(url):
-    # Utiliser pandas pour lire le fichier CSV directement depuis l'URL
-    df = pd.read_csv(url, sep = ',')
-    return df
+if uploaded_file is not None:
+    # Lire le fichier CSV
+    df = pd.read_csv(uploaded_file)
+    
+    # Afficher le DataFrame dans l'application
+    st.write("Aperçu des données :")
+    st.write(df.head())  # Affiche les premières lignes du DataFrame
 
-# URL du fichier CSV sur GitHub (s'assurer que c'est l'URL du fichier brut/raw)
-csv_url = 'https://raw.githubusercontent.com/Fernand-Naudin/Videodrome/main/final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv'
-
-# Charger les données
-df = load_data(csv_url)
-
-# Afficher le DataFrame dans l'application
-st.write("Aperçu des données :")
-st.dataframe(df)
 
 
