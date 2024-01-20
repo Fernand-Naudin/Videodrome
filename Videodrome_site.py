@@ -8,27 +8,28 @@ from io import StringIO
 # Configuration de la page pour utiliser toute la largeur
 st.set_page_config(layout="wide")
 
+@st.cache  # Utiliser le cache pour éviter de recharger les données à chaque interaction
+def load_data(url):
+    # Utiliser pandas pour lire le fichier CSV directement depuis l'URL
+    df = pd.read_csv(url)
+    return df
+
+
+
+
+
 # Chargement et préparation des données
 @st.cache_data
 def load_and_prepare_data():
-    # URL du fichier CSV sur GitHub
+    # URL du fichier CSV sur GitHub (s'assurer que c'est l'URL du fichier brut/raw)
     csv_url = 'https://raw.githubusercontent.com/Fernand-Naudin/Videodrome/main/final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv'
-    print(csv_url)
     
-    # Envoyer une requête HTTP GET pour obtenir le contenu du fichier CSV
-    response = requests.get(csv_url)
-    print(response)
-    response.raise_for_status()  # Vérifier que la requête a réussi
+    # Charger les données
+    df = load_data(csv_url)
     
-    # Convertir le contenu en texte en un objet fichier utilisable par Pandas
-    csv_raw = StringIO(response.text)
-    
-    # Utiliser pandas pour lire le fichier CSV
-    df = pd.read_csv(csv_raw)
-    
-    # Afficher les premières lignes du DataFrame pour vérifier
-    print(df.head())
-    
+    # Afficher le DataFrame dans l'application
+    st.write("Aperçu des données :")
+    st.dataframe(df)    
     
     # Utilisation de la colonne 'genres' pour la similarité
     tfidf = TfidfVectorizer()
