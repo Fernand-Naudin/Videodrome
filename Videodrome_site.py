@@ -19,7 +19,7 @@ def load_and_prepare_data():
 
     if uploaded_file is not None:
         # Pour lire le fichier téléversé comme un DataFrame
-        df = pd.read_csv(uploaded_file)
+        df = pd.read_csv(uploaded_file, sep=',')
         # Afficher les premières lignes du DataFrame
         st.write(df.head())
 
