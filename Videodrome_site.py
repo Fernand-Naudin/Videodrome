@@ -18,7 +18,7 @@ def load_data(url):
 @st.cache_resource
 def load_and_prepare_data():
     # URL du fichier CSV sur GitHub (s'assurer que c'est l'URL du fichier brut/raw)
-    csv_url = 'https://raw.githubusercontent.com/Fernand-Naudin/Videodrome/main/final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv'
+    csv_url = 'https://raw.githubusercontent.com/Fernand-Naudin/Videodrome/main/final_merged_imdb_akas_modified.csvv'
     
     # Charger les données
     df = load_data(csv_url)
@@ -29,11 +29,7 @@ def load_and_prepare_data():
     
     # Utilisation de la colonne 'genres' pour la similarité
     tfidf = TfidfVectorizer()
-    try:
-        tfidf_matrix = tfidf.fit_transform(df['genres'])
-    except KeyError:
-        st.error("La colonne 'genres' n'existe pas dans le DataFrame.")
-
+    tfidf_matrix = tfidf.fit_transform(df['genres'])
 
     # Calcul de la matrice de similarité cosinus
     cosine_sim = cosine_similarity(tfidf_matrix)
