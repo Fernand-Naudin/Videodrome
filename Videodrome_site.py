@@ -19,6 +19,15 @@ def load_data(url):
     df = pd.read_csv(csv_raw)
     return df
 
+# URL du fichier CSV sur GitHub
+csv_url = 'https://raw.githubusercontent.com/Fernand-Naudin/Videodrome/main/final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv'
+
+# Charger les données
+df = load_data(csv_url)
+
+# Afficher les données
+st.write(df)
+
 # Chargement et préparation des données
 # @st.cache_data
 def load_and_prepare_data():
