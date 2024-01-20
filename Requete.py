@@ -8,7 +8,7 @@ from io import StringIO
 import requests
 
 # URL du fichier CSV sur GitHub
-csv_url = 'https://raw.githubusercontent.com/user/repo/branch/filename.csv'
+csv_url = 'https://raw.githubusercontent.com/Fernand-Naudin/Videodrome/main/final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv'
 
 # Envoyer une requête GET
 response = requests.get(csv_url)
