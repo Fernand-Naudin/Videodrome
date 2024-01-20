@@ -14,10 +14,6 @@ def load_data(url):
     df = pd.read_csv(url)
     return df
 
-
-
-
-
 # Chargement et préparation des données
 @st.cache_data
 def load_and_prepare_data():
