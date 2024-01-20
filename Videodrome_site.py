@@ -62,6 +62,7 @@ def load_and_prepare_data():
     
     # Envoyer une requête HTTP GET pour obtenir le contenu du fichier CSV
     response = requests.get(csv_url)
+    print(response)
     response.raise_for_status()  # Vérifier que la requête a réussi
     
     # Convertir le contenu en texte en un objet fichier utilisable par Pandas
