@@ -16,7 +16,8 @@ def load_and_prepare_data():
     
     # Chargement des données
     df = pd.read_csv("https://github.com/Fernand-Naudin/Videodrome/tree/main/final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv", sep=",", on_bad_lines='skip')
-
+    df.columns
+    
     # Utilisation de la colonne 'genres' pour la similarité
     tfidf = TfidfVectorizer()
     try:
