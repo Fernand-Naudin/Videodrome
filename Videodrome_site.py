@@ -16,7 +16,7 @@ def load_and_prepare_data():
     
     # Chargement des données
     df = pd.read_csv("final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv", sep=",", on_bad_lines='skip')
-    df.head()
+    df.describe()
     
     # Utilisation de la colonne 'genres' pour la similarité
     tfidf = TfidfVectorizer()
