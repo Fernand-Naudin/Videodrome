@@ -18,7 +18,7 @@ def load_data(url):
 @st.cache_resource
 def load_and_prepare_data():
     # URL du fichier CSV sur GitHub (s'assurer que c'est l'URL du fichier brut/raw)
-    csv_url = 'https://raw.githubusercontent.com/Fernand-Naudin/Videodrome/main/final_merged_imdb_akas_modified.csv'
+    csv_url = 'https://raw.githubusercontent.com/Fernand-Naudin/Videodrome/main/final_merged_imdb_akas_filtered_4000.csv'
     
     # Charger les données
     df = load_data(csv_url)
