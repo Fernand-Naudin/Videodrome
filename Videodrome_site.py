@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import csv
 
 # Configuration de la page pour utiliser toute la largeur
 st.set_page_config(layout="wide")
