@@ -44,7 +44,7 @@ def load_and_prepare_data():
 
 
     # URL du fichier CSV sur GitHub
-    csv_url = 'https://raw.github.com/Fernand-Naudin/Videodrome/tree/main/final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv'
+    csv_url = 'https://raw.githubusercontent.com/Fernand-Naudin/Videodrome/main/final_merged_imdb_akas_2023-11-26_16h02m36s_m.csv'
     
     # Charger les données
     df = load_data(csv_url)
