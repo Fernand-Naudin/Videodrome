@@ -24,6 +24,7 @@ def load_and_prepare_data():
         st.write(df.head())
 
     st.dataframe(df)
+    df = st.dataframe(df)
 
 
     
