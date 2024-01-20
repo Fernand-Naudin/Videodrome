@@ -23,6 +23,7 @@ def load_and_prepare_data():
         # Afficher les premières lignes du DataFrame
         st.write(df.head())
 
+    st.dataframe(df)
 
 
     
